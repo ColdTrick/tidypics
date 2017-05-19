@@ -289,7 +289,7 @@ class TidypicsImage extends ElggFile {
 				$imagick->setImageOrientation(imagick::ORIENTATION_TOPLEFT);
 				$imagick->writeImage($data['tmp_name']);
 				$imagick->clear();
-				$imagick->destroy(); 
+				$imagick->destroy();
 			} else {
 				// make sure the in memory image size does not exceed memory available
 				$imginfo = getimagesize($data['tmp_name']);
@@ -396,7 +396,7 @@ class TidypicsImage extends ElggFile {
 		// move the uploaded file into album directory
 		$this->setOriginalFilename($data['name']);
 		$filename = $this->getFilenameOnFilestore();
-		$result = move_uploaded_file($data['tmp_name'], $filename);
+		$result = rename($data['tmp_name'], $filename);
 		if (!$result) {
 			return false;
 		}
