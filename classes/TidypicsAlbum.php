@@ -66,10 +66,11 @@ class TidypicsAlbum extends ElggObject {
 	/**
 	 * Get the title of the photo album
 	 *
+	 * @deprecated use getDisplayName()
 	 * @return string
 	 */
 	public function getTitle() {
-		return $this->title;
+		return $this->getDisplayName();
 	}
 
 	/**
