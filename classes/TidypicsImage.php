@@ -128,7 +128,22 @@ class TidypicsImage extends ElggFile {
 		if ($size == 'tiny') {
 			$size = 'thumb';
 		}
-		return elgg_normalize_url("photos/thumbnail/$this->guid/$size/");
+		
+		$fh = clone $this;
+		
+		switch ($size) {
+			case 'thumb':
+				$fh->setFilename($this->thumbnail);
+				break;
+			case 'small':
+				$fh->setFilename($this->smallthumb);
+				break;
+			case 'large':
+				$fh->setFilename($this->largethumb);
+				break;
+		}
+		
+		return elgg_get_inline_url($fh);
 	}
 
 	/**
