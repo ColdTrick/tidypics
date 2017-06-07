@@ -129,7 +129,8 @@ class TidypicsImage extends ElggFile {
 			$size = 'thumb';
 		}
 		
-		$fh = clone $this;
+		$fh = new ElggFile();
+		$fh->owner_guid = $this->owner_guid;
 		
 		switch ($size) {
 			case 'thumb':
@@ -140,6 +141,9 @@ class TidypicsImage extends ElggFile {
 				break;
 			case 'large':
 				$fh->setFilename($this->largethumb);
+				break;
+			default:
+				$fh->setFilename($this->getFilename());
 				break;
 		}
 		
