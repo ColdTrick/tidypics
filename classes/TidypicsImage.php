@@ -228,6 +228,9 @@ class TidypicsImage extends ElggFile {
 	 * @param array $data
 	 */
 	protected function OrientationCorrection($data) {
+		// 2017-09-13: disabled orientation fix
+		return;
+		
 		// Only try orientation correction if image format contains exif data
 		$exif_formats = array(
 			'image/jpeg',
