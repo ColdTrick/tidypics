@@ -17,8 +17,7 @@ function td_get_exif($image) {
 		return;
 	}
 
-	$mime = $image->mimetype;
-	if ($mime != 'image/jpeg' && $mime != 'image/pjpeg') {
+	if (!$image instanceof TidypicsImage) {
 		return;
 	}
 
