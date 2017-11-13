@@ -60,8 +60,11 @@ function td_get_exif($image) {
 
 		if ($data && is_array($data) && count($data) > 0) {
 			$image->tp_exif = serialize($data);
+			return;
 		}
 	}
+	
+	$image->tp_exif = serialize([]);
 }
 
 /**
