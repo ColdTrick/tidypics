@@ -78,6 +78,9 @@ function tp_exif_formatted($image) {
 	}
 
 	$exif = unserialize($exif);
+	if (empty($exif) || !is_array($exif)) {
+		return false;
+	}
 
 	$model = $exif['Model'];
 	if (!$model) {
