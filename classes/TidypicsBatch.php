@@ -6,15 +6,13 @@
 
 class TidypicsBatch extends ElggObject {
 
-  protected function initializeAttributes() {
-
-    parent::initializeAttributes();
-
-    $this->attributes['subtype'] = "tidypics_batch";
-  }
-
-  public function __construct($guid = null) {
-
-    parent::__construct($guid);
-  }
+	/**
+	 * {@inheritDoc}
+	 * @see ElggObject::initializeAttributes()
+	 */
+	protected function initializeAttributes() {
+		parent::initializeAttributes();
+		
+		$this->attributes['subtype'] = "tidypics_batch";
+	}
 }

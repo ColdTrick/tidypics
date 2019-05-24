@@ -9,14 +9,15 @@
 
 
 class TidypicsImage extends ElggFile {
+	
+	/**
+	 * {@inheritDoc}
+	 * @see ElggFile::initializeAttributes()
+	 */
 	protected function initializeAttributes() {
 		parent::initializeAttributes();
 
 		$this->attributes['subtype'] = "image";
-	}
-
-	public function __construct($guid = null) {
-		parent::__construct($guid);
 	}
 
 	/**
@@ -47,9 +48,12 @@ class TidypicsImage extends ElggFile {
 	/**
 	 * Delete image
 	 *
+	 * @param bool $recursive If true (default) then all entities which are
+	 *                        owned or contained by $this will also be deleted.
+	 *
 	 * @return bool
 	 */
-	public function delete() {
+	public function delete($recursive = true) {
 
 		// check if batch should be deleted
 		$batch = elgg_get_entities_from_relationship(array(
@@ -82,7 +86,7 @@ class TidypicsImage extends ElggFile {
 		$owner = $this->getOwnerEntity();
 		$owner->image_repo_size = (int)$owner->image_repo_size - $this->getSize();
 
-		return parent::delete();
+		return parent::delete($recursive);
 	}
 
 	/**

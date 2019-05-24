@@ -53,14 +53,17 @@ class TidypicsAlbum extends ElggObject {
 	/**
 	 * Delete album
 	 *
+	 * @param bool $recursive If true (default) then all entities which are
+	 *                        owned or contained by $this will also be deleted.
+	 *
 	 * @return bool
 	 */
-	public function delete() {
+	public function delete($recursive = true) {
 
 		$this->deleteImages();
 		$this->deleteAlbumDir();
 
-		return parent::delete();
+		return parent::delete($recursive);
 	}
 
 	/**
